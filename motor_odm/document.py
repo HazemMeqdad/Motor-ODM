@@ -22,7 +22,7 @@ from typing import (
 from bson import CodecOptions, ObjectId
 from motor.core import AgnosticClientSession, AgnosticCollection, AgnosticDatabase
 from pydantic import BaseModel, Field
-from pydantic.main import ModelMetaclass
+from pydantic._internal._model_construction import ModelMetaclass 
 from pymongo import IndexModel, ReadPreference, ReturnDocument, WriteConcern
 from pymongo.errors import DuplicateKeyError
 from pymongo.read_concern import ReadConcern
@@ -179,9 +179,9 @@ class Document(BaseModel, metaclass=DocumentMetaclass, abstract=True):
     class Config:
         """:meta private:"""
 
-        validate_all = True
+        validate_default = True
         validate_assignment = True
-        allow_population_by_field_name = True
+        populate_by_name = True
 
     if TYPE_CHECKING:
         # populated by the metaclass, defined here to help IDEs only
