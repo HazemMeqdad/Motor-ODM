@@ -28,9 +28,6 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms="any",
-    use_scm_version={
-        "local_scheme": "no-local-version",
-    },  # Support Legacy Installations
     install_requires=["PyMongo", "Motor", "Pydantic"],
     extras_require={
         "doc": list_requirements("docs/requirements.txt"),
